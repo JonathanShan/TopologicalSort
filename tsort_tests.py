@@ -27,5 +27,24 @@ class TestTsort(unittest.TestCase):
         actual = tsort(input)
         self.assertEqual(actual.strip(), expect)
 
+    def test_05(self):
+        input = ['v1', 'v2', 'v1', 'v3', 'v2', 'v4', 'v2', 'v5', 'v1', 'v4', 'v3', 'v6', 'v5', 'v4', 'v4', 'v3', 'v4', 'v6', 'v7', 'v6', 'v4', 'v7', 'v5', 'v7']
+        expect = "v1\nv2\nv5\nv4\nv7\nv3\nv6"
+        actual = tsort(input)
+        self.assertEqual(actual.strip(), expect)
+
+    def test_06(self):
+        input = ['B', 'A', 'C', 'D', 'C', 'E', 'S', 'C', 'G', 'S', 'C', 'F', 'F', 'G', 'G', 'H']
+        self.assertRaises(ValueError,tsort,input)
+
+    def test_07(self):
+        input = ['v1', 'v2', 'v1', 'v3', 'v2', 'v4', 'v2', 'v5', 'v1', 'v4', 'v3', 'v6', 'v5', 'v4', 'v4', 'v3', 'v4', 'v6', 'v7', 'v6', 'v4', 'v7', 'v5', 'v7', 'v8']
+        self.assertRaises(ValueError,tsort,input)
+
+    def test_08(self):
+        input = []
+        self.assertRaises(ValueError,tsort,input)
+
+
 if __name__ == "__main__":
     unittest.main()
